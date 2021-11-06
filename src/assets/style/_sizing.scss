@@ -1,0 +1,62 @@
+@for $number from 1 through 40 {
+	.m-#{$number} {
+		margin: #{$number / 4}rem;
+	}
+
+	.mt-#{$number} {
+		margin-top: #{$number / 4}rem;
+	}
+
+	.mr-#{$number} {
+		margin-right: #{$number / 4}rem;
+	}
+
+	.mb-#{$number} {
+		margin-bottom: #{$number / 4}rem;
+	}
+
+	.ml-#{$number} {
+		margin-left: #{$number / 4}rem;
+	}
+
+	.mx-#{$number} {
+		margin-right: #{$number / 4}rem;
+		margin-left: #{$number / 4}rem;
+	}
+
+	.my-#{$number} {
+		margin-top: #{$number / 4}rem;
+		margin-bottom: #{$number / 4}rem;
+	}
+
+}
+
+.m-auto {
+	margin: auto;
+}
+
+.mt-auto {
+	margin-top: auto;
+}
+
+.mr-auto {
+	margin-right: auto;
+}
+
+.mb-auto {
+	margin-bottom: auto;
+}
+
+.ml-auto {
+	margin-left: auto;
+}
+
+.mx-auto {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.my-auto {
+	margin-top: auto;
+	margin-bottom: auto;
+}
