@@ -5,7 +5,30 @@
 			:key="realState.address + realState.image"
 			class="card"
 		>
-			{{ realState.address }}
+			<div class="content-wrapper">
+				<div class="image-wrapper">
+					<img
+						:src="realState.image"
+						alt="real state photo"
+					/>
+				</div>
+				<div class="info">
+					<div class="text">
+						<h2>{{ realState.address }}</h2>
+						<span class="block mt-1">
+							{{ realState.city }}, {{ realState.state }}, {{ realState.zip }}
+						</span>
+					</div>
+					<div class="button-group">
+						<button class="success mr-2">SHARE</button>
+						<button class="outline">ARCHIVE</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="circle mr-6">
+				RS
+			</div>
 		</div>
 	</section>
 </template>
@@ -29,8 +52,8 @@ export default {
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--color-bg-header);
-  padding: 2rem 1.5rem;
+  background-color: var(--color-bg);
+	color: var(--color-text);
 
   border-radius: .3rem;
   border: 2px solid var(--color-border);
@@ -39,4 +62,78 @@ export default {
 		margin-bottom: .7rem;
 	}
 }
+
+
+.content-wrapper {
+	display: flex;
+}
+
+.image-wrapper {
+	height: 180px;
+	width: 180px;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	padding-top: .5rem;
+	margin-left: 1rem;
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	.text span {
+		font-size: 1.2rem;
+	}
+}
+
+button {
+	padding: .6rem 1.3rem;
+	font-size: 1rem;
+	font-weight: 600;
+	border: 0;
+	border-radius: 5px;
+
+	display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+	cursor: pointer;
+	transition: .3s;
+
+	border: 2px solid transparent;
+
+	&:hover {
+		filter: brightness(.9);
+	}
+
+	&.success {
+		background-color: #5db253;
+		color: #fff;
+	}
+
+	&.outline {
+		border-color: #435983;
+		color: #435983;
+	}
+}
+
+.circle {
+	background-color: #eee;
+	color: #fff;
+	border-radius: 50%;
+	font-size: 2rem;
+	text-transform: uppercase;
+	padding: 1rem;
+}
+
 </style>
