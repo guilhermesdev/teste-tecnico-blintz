@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<RealStateCard
-			v-for="realState in realStateList"
+			v-for="realState in realStateData"
 			:key="realState.address + realState.image"
 			:data="realState"
 		/>
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import realStateList from '@/data/realState';
 import RealStateCard from '@/components/RealStateCard.vue';
 
 export default {
@@ -17,9 +16,10 @@ export default {
 	components: {
 		RealStateCard
 	},
-	data() {
-		return {
-			realStateList
+	props: {
+		realStateData: {
+			type: Array,
+			required: true
 		}
 	}
 }

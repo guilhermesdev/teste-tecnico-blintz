@@ -1,7 +1,14 @@
 <template>
   <div class="container">
-    <TheHeader class="mb-4" />
-    <RealStateList />
+    <TheHeader
+      class="mb-4"
+      :all-length="realStateData.length"
+      :active-length="filterBy('active').length"
+      :inactive-length="filterBy('active', false).length"
+      @filter-changed="setFilter"
+      @order-changed="setOrder"
+    />
+    <RealStateList :real-state-data="sortedList" />
   </div>
 </template>
 
@@ -9,11 +16,49 @@
 import TheHeader from '@/components/TheHeader';
 import RealStateList from '@/components/RealStateList';
 
+import realStateData from './data/realState';
+
 export default {
   name: 'App',
   components: {
     TheHeader,
     RealStateList
+  },
+  data() {
+    return {
+      realStateData,
+      filter: '',
+      sort: 'address'
+    }
+  },
+  methods: {
+    filterBy(filter, boolean = true) {
+      return filter ?
+        this.realStateData
+          .filter(data => boolean ? data[filter] : !data[filter])
+        : this.realStateData;
+    },
+    setFilter(filter) {
+      this.filter = filter;
+    },
+    orderBy(field) {
+      return this.filteredList.sort((a, b) => {
+        return typeof field === 'number'
+          ? a[field] - b[field]
+          : a[field].localeCompare(b[field]);
+      });
+    },
+    setOrder(field) {
+      this.sort = field;
+    }
+  },
+  computed: {
+    filteredList() {
+      return this.filterBy(...this.filter);
+    },
+    sortedList() {
+      return this.orderBy(this.sort);
+    }
   }
 }
 </script>

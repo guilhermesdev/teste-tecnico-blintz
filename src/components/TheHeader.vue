@@ -3,14 +3,27 @@
     <div class="filters">
       <div class="input-field">
         <label for="filter">Filter</label>
-        <select id="filter">
-          <option value="active">Active (2)</option>
+        <select
+          id="filter"
+          v-model="selectedFilter"
+          @change="$emit('filter-changed', selectedFilter)"
+        >
+          <option value="">All ({{ allLength }})</option>
+          <option :value="['active', true]">Active ({{ activeLength }})</option>
+          <option :value="['active', false]">Inactive ({{ inactiveLength }})</option>
         </select>
       </div>
       <div class="input-field">
         <label for="sort">Sort</label>
-        <select id="sort">
-          <option value="most_recent">Most Recent</option>
+        <select
+          id="sort"
+          v-model="selectedSort"
+          @change="$emit('order-changed', selectedSort)"
+        >
+          <option value="address">Address</option>
+          <option value="city">City</option>
+          <option value="state">State</option>
+          <option value="zip">Zip</option>
         </select>
       </div>
     </div>
@@ -30,7 +43,27 @@
 
 <script>
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  props: {
+    allLength: {
+      type: Number,
+      required: true
+    },
+    activeLength: {
+      type: Number,
+      required: true
+    },
+    inactiveLength: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    return {
+      selectedFilter: '',
+      selectedSort: 'address'
+    }
+  }
 }
 </script>
 
