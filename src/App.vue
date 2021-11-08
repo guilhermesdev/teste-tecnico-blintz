@@ -2,9 +2,9 @@
   <div class="container">
     <TheHeader
       class="mb-4"
-      :all-length="realStateData.length"
-      :active-length="filterBy('active').length"
-      :inactive-length="filterBy('active', false).length"
+      :total-number="totalNumber"
+      :number-of-active="numberOfActive"
+      :number-of-inactive="numberOfInactive"
       @filter-changed="setFilter"
       @order-changed="setOrder"
       @search-change="setSearch"
@@ -69,6 +69,29 @@ export default {
       return this.sortedList.filter(({ address, city }) =>
         address.match(regex) || city.match(regex)
       );
+    },
+    totalNumber() {
+      const regex = new RegExp(this.search, 'ig');
+
+      return this.realStateData.filter(({ address, city }) =>
+        address.match(regex) || city.match(regex)
+      ).length;
+    },
+    numberOfActive() {
+      const filteredArray = this.filterBy(...['active', true]);
+      const regex = new RegExp(this.search, 'ig');
+
+      return filteredArray.filter(({ address, city }) =>
+        address.match(regex) || city.match(regex)
+      ).length;
+    },
+    numberOfInactive() {
+      const filteredArray = this.filterBy(...['active', false]);
+      const regex = new RegExp(this.search, 'ig');
+
+      return filteredArray.filter(({ address, city }) =>
+        address.match(regex) || city.match(regex)
+      ).length;
     }
   }
 }

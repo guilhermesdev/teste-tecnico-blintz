@@ -8,9 +8,9 @@
           v-model="selectedFilter"
           @change="$emit('filter-changed', selectedFilter)"
         >
-          <option value="">All ({{ allLength }})</option>
-          <option :value="['active', true]">Active ({{ activeLength }})</option>
-          <option :value="['active', false]">Inactive ({{ inactiveLength }})</option>
+          <option value="">All ({{ totalNumber }})</option>
+          <option :value="['active', true]">Active ({{ numberOfActive }})</option>
+          <option :value="['active', false]">Inactive ({{ numberOfInactive }})</option>
         </select>
       </div>
       <div class="input-field">
@@ -35,7 +35,7 @@
           type="text"
           id="search"
           placeholder="Search Packages"
-          v-model="search"
+          v-model.trim="search"
           @input="$emit('search-change', search)"
         />
       </div>
@@ -47,15 +47,15 @@
 export default {
   name: 'TheHeader',
   props: {
-    allLength: {
+    totalNumber: {
       type: Number,
       required: true
     },
-    activeLength: {
+    numberOfActive: {
       type: Number,
       required: true
     },
-    inactiveLength: {
+    numberOfInactive: {
       type: Number,
       required: true
     }
