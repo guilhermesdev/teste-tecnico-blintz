@@ -5,6 +5,7 @@
         <label for="filter">Filter</label>
         <select
           id="filter"
+          class="mr-4"
           v-model="selectedFilter"
           @change="$emit('filter-changed', selectedFilter)"
         >
@@ -85,12 +86,25 @@ header {
 
   border-radius: .3rem;
   border: 2px solid var(--color-border);
+
+  @media (max-width: 630px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    .filters {
+      margin-bottom: 1rem;
+
+      > * {
+        flex: 1;
+      }
+    }
+  }
 }
 
 .filters {
   display: flex;
-  gap: 1rem;
 }
+
 .input-field {
   display: flex;
   flex-direction: column;

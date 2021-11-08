@@ -54,10 +54,21 @@ export default {
 	&:not(:last-child) {
 		margin-bottom: .7rem;
 	}
+
+	@media (max-width: 630px) {
+		.circle {
+			display: none;
+		}
+	}
 }
 
 .content-wrapper {
 	display: flex;
+
+	@media (max-width: 500px) {
+		width: 100%;
+		flex-direction: column;
+	}
 }
 
 .image-wrapper {
@@ -69,6 +80,10 @@ export default {
 		height: 100%;
 		object-fit: cover;
 	}
+
+	@media (max-width: 500px) {
+		width: 100%;
+	}
 }
 
 .info {
@@ -79,12 +94,24 @@ export default {
 	padding-top: .5rem;
 	margin-left: 1rem;
 
+	@media (max-width: 500px) {
+		padding: 1rem 0;
+
+		> *:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+
 	h2 {
 		font-size: 2rem;
 	}
 
 	.text span {
 		font-size: 1.2rem;
+	}
+
+	.button-group {
+		display: flex;
 	}
 }
 
