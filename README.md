@@ -1,24 +1,14 @@
-# teste-tecnico-blintz
+# Teste técnico Blintz
 
-## Project setup
-```
-yarn install
-```
+## Tecnologias utilizadas
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+- Vue.js
+- Vue CLI
+- PostCSS
+- PurgeCSS
+- Sass
+- ESLint
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Resultado final
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+O resultado final pode ser visto [aqui](https://guilhermesdev-teste-blintz.netlify.app).
