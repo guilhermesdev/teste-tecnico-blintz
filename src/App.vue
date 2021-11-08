@@ -29,7 +29,7 @@ export default {
     return {
       realStateData,
       filter: '',
-      sort: 'address',
+      order: ['address', 'asc'],
       search: ''
     }
   },
@@ -43,15 +43,15 @@ export default {
     setFilter(filter) {
       this.filter = filter;
     },
-    orderBy(field) {
+    orderBy(field, order = 'asc') {
       return this.filteredList.sort((a, b) => {
-        return typeof field === 'number'
-          ? a[field] - b[field]
-          : a[field].localeCompare(b[field]);
+        return order === 'asc'
+          ? a[field].localeCompare(b[field])
+          : b[field].localeCompare(a[field]);
       });
     },
     setOrder(field) {
-      this.sort = field;
+      this.order = field;
     },
     setSearch(text) {
       this.search = text;
@@ -62,7 +62,7 @@ export default {
       return this.filterBy(...this.filter);
     },
     sortedList() {
-      return this.orderBy(this.sort);
+      return this.orderBy(...this.order);
     },
     presentationList() {
       const regex = new RegExp(this.search, 'ig');

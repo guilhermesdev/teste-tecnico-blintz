@@ -20,10 +20,14 @@
           v-model="selectedSort"
           @change="$emit('order-changed', selectedSort)"
         >
-          <option value="address">Address</option>
-          <option value="city">City</option>
-          <option value="state">State</option>
-          <option value="zip">Zip</option>
+          <option :value="['address', 'asc']">Address (A-Z)</option>
+          <option :value="['address', 'desc']">Address (Z-A)</option>
+          <option :value="['city', 'asc']">City (A-Z)</option>
+          <option :value="['city', 'desc']">City (Z-A)</option>
+          <option :value="['state', 'asc']">State (A-Z)</option>
+          <option :value="['state', 'desc']">State (Z-A)</option>
+          <option :value="['zip', 'asc']">Zip (0-9)</option>
+          <option :value="['zip', 'desc']">Zip (9-0)</option>
         </select>
       </div>
     </div>
@@ -63,7 +67,7 @@ export default {
   data() {
     return {
       selectedFilter: '',
-      selectedSort: 'address',
+      selectedSort: ['address', 'asc'],
       search: ''
     }
   }
