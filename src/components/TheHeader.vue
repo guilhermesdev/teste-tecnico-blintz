@@ -36,13 +36,16 @@
     <div class="search">
       <div class="input-field">
         <label for="search">Search</label>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search Packages"
-          v-model.trim="search"
-          @input="$emit('search-change', search)"
-        />
+        <div class="search-input-container">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search Packages"
+            v-model.trim="search"
+            @input="$emit('search-change', search)"
+          />
+          <img src="@/assets/magnifier.png" alt="magnifier" />
+        </div>
       </div>
     </div>
   </header>
@@ -125,6 +128,19 @@ header {
     font-size: 1rem;
 
     outline-color: var(--color-text);
+  }
+}
+
+.search-input-container {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
   }
 }
 </style>
