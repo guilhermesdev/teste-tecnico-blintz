@@ -95,10 +95,12 @@ export default {
 	margin-left: 1rem;
 
 	@media (max-width: 500px) {
-		padding: 1rem 0;
+		padding: 1rem;
+		margin-left: 0;
 
-		> *:not(:last-child) {
-			margin-bottom: 1rem;
+		.button-group > * {
+			flex: 1;
+			margin-top: 1.5rem;
 		}
 	}
 
@@ -112,6 +114,7 @@ export default {
 
 	.button-group {
 		display: flex;
+		width: 100%;
 	}
 }
 
