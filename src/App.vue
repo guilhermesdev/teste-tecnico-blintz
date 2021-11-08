@@ -7,8 +7,9 @@
       :inactive-length="filterBy('active', false).length"
       @filter-changed="setFilter"
       @order-changed="setOrder"
+      @search-change="setSearch"
     />
-    <RealStateList :real-state-data="sortedList" />
+    <RealStateList :real-state-data="presentationList" />
   </div>
 </template>
 
@@ -28,7 +29,8 @@ export default {
     return {
       realStateData,
       filter: '',
-      sort: 'address'
+      sort: 'address',
+      search: ''
     }
   },
   methods: {
@@ -50,6 +52,9 @@ export default {
     },
     setOrder(field) {
       this.sort = field;
+    },
+    setSearch(text) {
+      this.search = text;
     }
   },
   computed: {
@@ -58,6 +63,12 @@ export default {
     },
     sortedList() {
       return this.orderBy(this.sort);
+    },
+    presentationList() {
+      const regex = new RegExp(this.search, 'ig');
+      return this.sortedList.filter(({ address, city }) =>
+        address.match(regex) || city.match(regex)
+      );
     }
   }
 }

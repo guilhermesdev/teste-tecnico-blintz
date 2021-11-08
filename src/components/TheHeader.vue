@@ -35,6 +35,8 @@
           type="text"
           id="search"
           placeholder="Search Packages"
+          v-model="search"
+          @input="$emit('search-change', search)"
         />
       </div>
     </div>
@@ -61,7 +63,8 @@ export default {
   data() {
     return {
       selectedFilter: '',
-      selectedSort: 'address'
+      selectedSort: 'address',
+      search: ''
     }
   }
 }
